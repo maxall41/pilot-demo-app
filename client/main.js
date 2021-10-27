@@ -26,6 +26,9 @@ Template.postForm.events({
         "https://avatars.githubusercontent.com/u/" + githubUser.id + "?v=4",
       username: githubUser.username,
       date: new Date().getTime(),
+      likedBy: {
+
+      }
     });
 
     // Clear form
