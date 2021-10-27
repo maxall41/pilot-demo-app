@@ -1,0 +1,120 @@
+<head>
+  <title>Pilot | Social media for code</title>
+  <link rel="icon" type="image/svg+xml" href="/rocket.svg" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+</head>
+
+<body>
+  <h1 class="page-header">Welcome to Pilot!</h1>
+  <p style="color:#fff;">Pilot is a demo app i made with <a href="https://meteor.com">Meteor</a> to test it out. Pilot is a simple application where you can post about code you are writing. Let me know if you run into any issues with it. I may add more things to it later on but it's mostly just a demo app</p>
+  {{#if currentUser}} {{> postForm}}{{> posts}} {{else}} {{>
+  loginMsg}} {{/if}}
+  {{> loginButtons}}
+</body>
+
+<template name="loginMsg">
+  <div class="container">
+    <h1>Please login with github to post</h1>
+  </div>
+</template>
+
+<template name="posts">
+  <div class="container">
+    <header>
+      <h1>Posts:</h1>
+    </header>
+
+    <ul>
+      {{#each posts}} {{> post}} {{/each}}
+    </ul>
+  </div>
+</template>
+
+<template name="postForm">
+  <div class="postForm">
+    <h2>Upload a post:</h2>
+    <form class="new-post" autocomplete="off">
+      <input type="text" name="title" placeholder="Title" />
+      <textarea
+        id="code-area"
+        type="text"
+        name="code"
+        placeholder="Code"
+      ></textarea>
+      <button>Upload post</button>
+    </form>
+  </div>
+</template>
+
+<template name="post">
+  <div class="post" data-tilt>
+    <div class="row">
+      <img width="36" height="36" class="profilePic" src="{{userProfilePic}}" />
+      <p>{{username}}</p>
+    </div>
+    <h3>{{title}}</h3>
+    <pre charset="utf-8" class="codeSnippet">{{{text}}}</pre>
+    {{> like postTitle=title }}
+  </div>
+</template>
+
+<!-- <template name="info">
+  <h2>Learn Meteor!</h2>
+  <ul>
+    <li>
+      <a href="https://www.meteor.com/try" target="_blank">Do the Tutorial</a>
+    </li>
+    <li>
+      <a href="http://guide.meteor.com" target="_blank">Follow the Guide</a>
+    </li>
+    <li><a href="https://docs.meteor.com" target="_blank">Read the Docs</a></li>
+    <li><a href="https://forums.meteor.com" target="_blank">Discussions</a></li>
+  </ul>
+</template> -->
+
+<template name="like">
+  <div class="likeArea">
+    <button class="button dark likeButton">
+      <div class="hand">
+        <div class="thumb"></div>
+      </div>
+      <span>Like<span>d</span> {{likes}}</span>
+    </button>
+  </div>
+  <script>
+    document.querySelectorAll(".button").forEach((button) => {
+      button.addEventListener("click", (e) => {
+        button.classList.toggle("liked");
+        if (button.classList.contains("liked")) {
+          gsap.fromTo(
+            button,
+            {
+              "--hand-rotate": 8,
+            },
+            {
+              ease: "none",
+              keyframes: [
+                {
+                  "--hand-rotate": -45,
+                  duration: 0.16,
+                  ease: "none",
+                },
+                {
+                  "--hand-rotate": 15,
+                  duration: 0.12,
+                  ease: "none",
+                },
+                {
+                  "--hand-rotate": 0,
+                  duration: 0.2,
+                  ease: "none",
+                  clearProps: true,
+                },
+              ],
+            }
+          );
+        }
+      });
+    });
+  </script>
+</template>

@@ -1,0 +1,288 @@
+body {
+  padding: 10px;
+  display: flex;
+  flex-direction: column;
+  background: #1e2337;
+  color: rgb(125, 145, 255);
+}
+
+a {
+  color: rgb(125, 145, 255);
+}
+
+* {
+  font-family: Arial, Helvetica, sans-serif;
+}
+
+h1,
+h2,
+h3,
+h4 {
+  color: linear-gradient(132deg, #869bff, #e671e0);
+}
+
+button {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  height: 2rem;
+  border: none;
+  border-radius: 4px;
+  color: #fff;
+  background: linear-gradient(145deg, #869bff, #9a71e6);
+  box-shadow: 31px 31px 62px #171b2a, -31px -31px 62px #252b44;
+  transition: all 0.2s ease-in-out;
+}
+
+button:hover {
+  animation: buttonHover 1.5s ease;
+  background: linear-gradient(432deg, #9a71e6, #869bff);
+}
+
+.new-post button {
+  width: 15rem;
+}
+
+input,
+textarea {
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  width: 50%;
+  border: none;
+  background: transparent;
+  border-bottom: 2px solid #869bff;
+  color: rgb(184, 241, 255);
+}
+
+input::placeholder {
+  color: #ff9ef2;
+}
+
+textarea::placeholder {
+  color: #ff9ef2;
+}
+
+input,
+textarea:focus {
+  outline: none;
+}
+
+.page-header {
+  text-align: center;
+  font-weight: 900;
+}
+
+.postForm {
+  box-shadow: 31px 31px 62px #171b2a, -31px -31px 62px #252b44;
+  border-radius: 8px;
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  display: flex;
+  flex-direction: column;
+}
+
+.new-post {
+  display: flex;
+  flex-direction: column;
+}
+
+.row {
+  display: flex;
+  align-items: center;
+}
+
+.profilePic {
+  border-radius: 50px;
+  margin-right: 0.5rem;
+}
+
+.post {
+  padding: 1rem;
+  margin-top: 1rem;
+  margin-bottom: 1rem;
+  border-radius: 8px;
+  background: #1e2337;
+  box-shadow: 31px 31px 62px #171b2a, -31px -31px 62px #252b44;
+}
+
+.codeSnippet {
+  background: rgb(25, 23, 41);
+  color: #fff;
+  padding-top: 1.5rem;
+  padding-bottom: 1.5rem;
+  border-radius: 8px;
+  padding-left: 10px;
+  white-space: pre-wrap;
+}
+
+.likeArea .button {
+  --color: #1e2235;
+  --color-hover: #1e2235;
+  --color-active: #fff;
+  --icon: #bbc1e1;
+  --icon-hover: #8a91b4;
+  --icon-active: #fff;
+  --background: #fff;
+  --background-hover: #fff;
+  --background-active: #362a89;
+  --border: #e1e6f9;
+  --border-active: #362a89;
+  --shadow: rgba(0, 17, 119, 0.025);
+  display: block;
+  outline: none;
+  cursor: pointer;
+  position: relative;
+  border: 0;
+  background: none;
+  padding: 8px 20px 8px 24px;
+  border-radius: 9px;
+  line-height: 27px;
+  font-family: inherit;
+  font-weight: 600;
+  font-size: 14px;
+  color: var(--color);
+  -webkit-appearance: none;
+  -webkit-tap-highlight-color: transparent;
+  transition: color 0.2s linear;
+}
+.likeArea .button.dark {
+  --color: #f6f8ff;
+  --color-hover: #f6f8ff;
+  --color-active: #fff;
+  --icon: #8a91b4;
+  --icon-hover: #bbc1e1;
+  --icon-active: #fff;
+  --background: #1e2235;
+  --background-hover: #171827;
+  --background-active: linear-gradient(145deg, #869bff, #9a71e6);
+  --border: transparent;
+  --border-active: transparent;
+  --shadow: rgba(0, 17, 119, 0.16);
+}
+.likeArea .button:hover {
+  --icon: var(--icon-hover);
+  --color: var(--color-hover);
+  --background: var(--background-hover);
+  --border-width: 2px;
+}
+.likeArea .button:active {
+  --scale: 0.95;
+}
+.likeArea .button:not(.liked):hover {
+  --hand-rotate: 8;
+  --hand-thumb-1: -12deg;
+  --hand-thumb-2: 36deg;
+}
+.likeArea .button.liked {
+  --span-x: 2px;
+  --span-d-o: 1;
+  --span-d-x: 0;
+  --icon: var(--icon-active);
+  --color: var(--color-active);
+  --border: var(--border-active);
+  --background: var(--background-active);
+}
+.likeArea .button:before {
+  content: "";
+  min-width: 103px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  border-radius: inherit;
+  transition: background 0.2s linear, transform 0.2s, box-shadow 0.2s linear;
+  transform: scale(var(--scale, 1)) translateZ(0);
+  background: var(--background);
+  box-shadow: inset 0 0 0 var(--border-width, 1px) var(--border),
+    0 4px 8px var(--shadow), 0 8px 20px var(--shadow);
+}
+.likeArea button .hand {
+  width: 11px;
+  height: 11px;
+  border-radius: 2px 0 0 0;
+  background: var(--icon);
+  position: relative;
+  margin: 10px 8px 0 0;
+  transform-origin: -5px -1px;
+  transition: transform 0.25s, background 0.2s linear;
+  transform: rotate(calc(var(--hand-rotate, 0) * 1deg)) translateZ(0);
+}
+.likeArea .button .hand:before,
+.button .hand:after {
+  content: "";
+  background: var(--icon);
+  position: absolute;
+  transition: background 0.2s linear, box-shadow 0.2s linear;
+}
+.likeArea .button .hand:before {
+  left: -5px;
+  bottom: 0;
+  height: 12px;
+  width: 4px;
+  border-radius: 1px 1px 0 1px;
+}
+.likeArea .button .hand:after {
+  right: -3px;
+  top: 0;
+  width: 4px;
+  height: 4px;
+  border-radius: 0 2px 2px 0;
+  background: var(--icon);
+  box-shadow: -0.5px 4px 0 var(--icon), -1px 8px 0 var(--icon),
+    -1.5px 12px 0 var(--icon);
+  transform: scaleY(0.6825);
+  transform-origin: 0 0;
+}
+.likeArea .button .hand .thumb {
+  background: var(--icon);
+  width: 10px;
+  height: 4px;
+  border-radius: 2px;
+  transform-origin: 2px 2px;
+  position: absolute;
+  left: 0;
+  top: 0;
+  transition: transform 0.25s, background 0.2s linear;
+  transform: scale(0.85) translateY(-0.5px) rotate(var(--hand-thumb-1, -45deg))
+    translateZ(0);
+}
+.likeArea .button .hand .thumb:before {
+  content: "";
+  height: 4px;
+  width: 7px;
+  border-radius: 2px;
+  transform-origin: 2px 2px;
+  background: var(--icon);
+  position: absolute;
+  left: 7px;
+  top: 0;
+  transition: transform 0.25s, background 0.2s linear;
+  transform: rotate(var(--hand-thumb-2, -45deg)) translateZ(0);
+}
+.likeArea .button .hand,
+.button span {
+  display: inline-block;
+  vertical-align: top;
+}
+.likeArea .button .hand span,
+.button span span {
+  opacity: var(--span-d-o, 0);
+  transition: transform 0.25s, opacity 0.2s linear;
+  transform: translateX(var(--span-d-x, 4px)) translateZ(0);
+}
+.likeArea .button > span {
+  transition: transform 0.25s;
+  transform: translateX(var(--span-x, 4px)) translateZ(0);
+}
+html {
+  box-sizing: border-box;
+  -webkit-font-smoothing: antialiased;
+}
+.likeArea * {
+  box-sizing: inherit;
+}
+.likeArea *:before,
+*:after {
+  box-sizing: inherit;
+}
