@@ -45,7 +45,6 @@ Template.like.helpers({
   likes() {
     const title = Template.instance().data.postTitle
     const post = PostsCollection.findOne({ title: title })
-    console.log("POST",post)
     return post.likedBy.length
   },
 });
@@ -71,7 +70,6 @@ Template.like.events({
     event.preventDefault();
     // Grab post data
     const title = this.postTitle
-    console.log('Liked post title is ' + title)
     // Grab user data
     const user = Meteor.users.findOne(Meteor.userId());
     const githubUser = user.services.github;
